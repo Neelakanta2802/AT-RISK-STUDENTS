@@ -1,0 +1,502 @@
+<!DOCTYPE html><html><head><title>Student Data Table</title><style>body{font-family:Arial,sans-serif;margin:20px;background:#f5f5f5;}table{border-collapse:collapse;width:100%;background:white;box-shadow:0 2px 4px rgba(0,0,0,0.1);}th{background:#4CAF50;color:white;padding:12px;text-align:left;font-weight:bold;border:1px solid #ddd;}td{padding:10px;border:1px solid #ddd;}tr:nth-child(even){background:#f9f9f9;}tr:hover{background:#f1f1f1;}h1{color:#333;}</style></head><body><h1>Student Data Table (30 Records)</h1><table border="1" class="dataframe table table-striped table-bordered" id="student-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>roll_number</th>
+      <th>full_name</th>
+      <th>email</th>
+      <th>department</th>
+      <th>program</th>
+      <th>year_level</th>
+      <th>semester</th>
+      <th>course_code</th>
+      <th>course_name</th>
+      <th>grade</th>
+      <th>credits</th>
+      <th>gpa</th>
+      <th>attendance_date</th>
+      <th>attendance_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>STU001</td>
+      <td>John Smith</td>
+      <td>john.smith@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>CS201</td>
+      <td>Data Structures</td>
+      <td>3.2</td>
+      <td>3</td>
+      <td>3.2</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU002</td>
+      <td>Emily Johnson</td>
+      <td>emily.johnson@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>CS301</td>
+      <td>Database Systems</td>
+      <td>3.8</td>
+      <td>3</td>
+      <td>3.8</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU003</td>
+      <td>Michael Brown</td>
+      <td>michael.brown@university.edu</td>
+      <td>Mathematics</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>MATH101</td>
+      <td>Calculus I</td>
+      <td>2.1</td>
+      <td>4</td>
+      <td>2.1</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU004</td>
+      <td>Sarah Davis</td>
+      <td>sarah.davis@university.edu</td>
+      <td>Engineering</td>
+      <td>Undergraduate</td>
+      <td>4</td>
+      <td>Fall 2024</td>
+      <td>ENG401</td>
+      <td>Advanced Engineering</td>
+      <td>3.6</td>
+      <td>3</td>
+      <td>3.6</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU005</td>
+      <td>David Wilson</td>
+      <td>david.wilson@university.edu</td>
+      <td>Business</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>BUS201</td>
+      <td>Accounting Principles</td>
+      <td>2.9</td>
+      <td>3</td>
+      <td>2.9</td>
+      <td>2024-09-15</td>
+      <td>late</td>
+    </tr>
+    <tr>
+      <td>STU006</td>
+      <td>Jessica Martinez</td>
+      <td>jessica.martinez@university.edu</td>
+      <td>Psychology</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>PSY301</td>
+      <td>Abnormal Psychology</td>
+      <td>3.7</td>
+      <td>3</td>
+      <td>3.7</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU007</td>
+      <td>Christopher Lee</td>
+      <td>christopher.lee@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>CS101</td>
+      <td>Introduction to Programming</td>
+      <td>1.8</td>
+      <td>3</td>
+      <td>1.8</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU008</td>
+      <td>Amanda Taylor</td>
+      <td>amanda.taylor@university.edu</td>
+      <td>Biology</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>BIO201</td>
+      <td>Cell Biology</td>
+      <td>3.3</td>
+      <td>4</td>
+      <td>3.3</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU009</td>
+      <td>James Anderson</td>
+      <td>james.anderson@university.edu</td>
+      <td>Engineering</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>ENG301</td>
+      <td>Mechanics</td>
+      <td>3.4</td>
+      <td>4</td>
+      <td>3.4</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU010</td>
+      <td>Lisa Thomas</td>
+      <td>lisa.thomas@university.edu</td>
+      <td>Business</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>BUS101</td>
+      <td>Introduction to Business</td>
+      <td>2.2</td>
+      <td>3</td>
+      <td>2.2</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU011</td>
+      <td>Robert Jackson</td>
+      <td>robert.jackson@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>4</td>
+      <td>Fall 2024</td>
+      <td>CS401</td>
+      <td>Artificial Intelligence</td>
+      <td>3.9</td>
+      <td>3</td>
+      <td>3.9</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU012</td>
+      <td>Michelle White</td>
+      <td>michelle.white@university.edu</td>
+      <td>Psychology</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>PSY201</td>
+      <td>Developmental Psychology</td>
+      <td>3.2</td>
+      <td>3</td>
+      <td>3.2</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU013</td>
+      <td>Daniel Harris</td>
+      <td>daniel.harris@university.edu</td>
+      <td>Mathematics</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>MATH301</td>
+      <td>Linear Algebra</td>
+      <td>2.8</td>
+      <td>3</td>
+      <td>2.8</td>
+      <td>2024-09-15</td>
+      <td>late</td>
+    </tr>
+    <tr>
+      <td>STU014</td>
+      <td>Jennifer Martin</td>
+      <td>jennifer.martin@university.edu</td>
+      <td>Biology</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>BIO101</td>
+      <td>Introduction to Biology</td>
+      <td>1.9</td>
+      <td>4</td>
+      <td>1.9</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU015</td>
+      <td>William Thompson</td>
+      <td>william.thompson@university.edu</td>
+      <td>Engineering</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>ENG201</td>
+      <td>Statics</td>
+      <td>3.1</td>
+      <td>4</td>
+      <td>3.1</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU016</td>
+      <td>Patricia Garcia</td>
+      <td>patricia.garcia@university.edu</td>
+      <td>Business</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>BUS301</td>
+      <td>Financial Management</td>
+      <td>3.5</td>
+      <td>3</td>
+      <td>3.5</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU017</td>
+      <td>Richard Martinez</td>
+      <td>richard.martinez@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>CS101</td>
+      <td>Introduction to Programming</td>
+      <td>2.3</td>
+      <td>3</td>
+      <td>2.3</td>
+      <td>2024-09-15</td>
+      <td>late</td>
+    </tr>
+    <tr>
+      <td>STU018</td>
+      <td>Elizabeth Robinson</td>
+      <td>elizabeth.robinson@university.edu</td>
+      <td>Psychology</td>
+      <td>Undergraduate</td>
+      <td>4</td>
+      <td>Fall 2024</td>
+      <td>PSY401</td>
+      <td>Clinical Psychology</td>
+      <td>3.8</td>
+      <td>3</td>
+      <td>3.8</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU019</td>
+      <td>Joseph Clark</td>
+      <td>joseph.clark@university.edu</td>
+      <td>Mathematics</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>MATH201</td>
+      <td>Calculus II</td>
+      <td>2.4</td>
+      <td>4</td>
+      <td>2.4</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU020</td>
+      <td>Mary Rodriguez</td>
+      <td>mary.rodriguez@university.edu</td>
+      <td>Biology</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>BIO301</td>
+      <td>Microbiology</td>
+      <td>3.4</td>
+      <td>4</td>
+      <td>3.4</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU021</td>
+      <td>Charles Lewis</td>
+      <td>charles.lewis@university.edu</td>
+      <td>Engineering</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>ENG101</td>
+      <td>Introduction to Engineering</td>
+      <td>1.7</td>
+      <td>3</td>
+      <td>1.7</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU022</td>
+      <td>Nancy Walker</td>
+      <td>nancy.walker@university.edu</td>
+      <td>Business</td>
+      <td>Undergraduate</td>
+      <td>4</td>
+      <td>Fall 2024</td>
+      <td>BUS401</td>
+      <td>Strategic Management</td>
+      <td>3.7</td>
+      <td>3</td>
+      <td>3.7</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU023</td>
+      <td>Thomas Hall</td>
+      <td>thomas.hall@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>CS201</td>
+      <td>Data Structures</td>
+      <td>2.6</td>
+      <td>3</td>
+      <td>2.6</td>
+      <td>2024-09-15</td>
+      <td>late</td>
+    </tr>
+    <tr>
+      <td>STU024</td>
+      <td>Karen Allen</td>
+      <td>karen.allen@university.edu</td>
+      <td>Psychology</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>PSY101</td>
+      <td>Introduction to Psychology</td>
+      <td>2.1</td>
+      <td>3</td>
+      <td>2.1</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU025</td>
+      <td>Steven Young</td>
+      <td>steven.young@university.edu</td>
+      <td>Mathematics</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>MATH301</td>
+      <td>Linear Algebra</td>
+      <td>3.3</td>
+      <td>3</td>
+      <td>3.3</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU026</td>
+      <td>Betty King</td>
+      <td>betty.king@university.edu</td>
+      <td>Biology</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>BIO201</td>
+      <td>Cell Biology</td>
+      <td>2.8</td>
+      <td>4</td>
+      <td>2.8</td>
+      <td>2024-09-15</td>
+      <td>late</td>
+    </tr>
+    <tr>
+      <td>STU027</td>
+      <td>Edward Wright</td>
+      <td>edward.wright@university.edu</td>
+      <td>Engineering</td>
+      <td>Undergraduate</td>
+      <td>4</td>
+      <td>Fall 2024</td>
+      <td>ENG401</td>
+      <td>Advanced Engineering</td>
+      <td>3.5</td>
+      <td>3</td>
+      <td>3.5</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU028</td>
+      <td>Sandra Lopez</td>
+      <td>sandra.lopez@university.edu</td>
+      <td>Business</td>
+      <td>Undergraduate</td>
+      <td>1</td>
+      <td>Fall 2024</td>
+      <td>BUS101</td>
+      <td>Introduction to Business</td>
+      <td>1.8</td>
+      <td>3</td>
+      <td>1.8</td>
+      <td>2024-09-15</td>
+      <td>absent</td>
+    </tr>
+    <tr>
+      <td>STU029</td>
+      <td>Kenneth Hill</td>
+      <td>kenneth.hill@university.edu</td>
+      <td>Computer Science</td>
+      <td>Undergraduate</td>
+      <td>3</td>
+      <td>Fall 2024</td>
+      <td>CS301</td>
+      <td>Database Systems</td>
+      <td>3.6</td>
+      <td>3</td>
+      <td>3.6</td>
+      <td>2024-09-15</td>
+      <td>present</td>
+    </tr>
+    <tr>
+      <td>STU030</td>
+      <td>Donna Scott</td>
+      <td>donna.scott@university.edu</td>
+      <td>Psychology</td>
+      <td>Undergraduate</td>
+      <td>2</td>
+      <td>Fall 2024</td>
+      <td>PSY201</td>
+      <td>Developmental Psychology</td>
+      <td>2.9</td>
+      <td>3</td>
+      <td>2.9</td>
+      <td>2024-09-15</td>
+      <td>late</td>
+    </tr>
+  </tbody>
+</table></body></html>
