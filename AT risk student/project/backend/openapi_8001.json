@@ -1,0 +1,469 @@
+﻿{
+    "openapi":  "3.1.0",
+    "info":  {
+                 "title":  "Early Warning System API",
+                 "description":  "Backend API for Early Warning System to identify at-risk students",
+                 "version":  "1.0.0"
+             },
+    "paths":  {
+                  "/api/students":  {
+                                        "get":  {
+                                                    "summary":  "Get Students",
+                                                    "description":  "Get list of students with optional filters.",
+                                                    "operationId":  "get_students_api_students_get",
+                                                    "parameters":  [
+                                                                       "@{name=department; in=query; required=False; schema=; description=Filter by department}",
+                                                                       "@{name=semester; in=query; required=False; schema=; description=Filter by semester}",
+                                                                       "@{name=status; in=query; required=False; schema=; description=Filter by status}",
+                                                                       "@{name=limit; in=query; required=False; schema=}",
+                                                                       "@{name=offset; in=query; required=False; schema=}"
+                                                                   ],
+                                                    "responses":  {
+                                                                      "200":  "@{description=Successful Response; content=}",
+                                                                      "422":  "@{description=Validation Error; content=}"
+                                                                  }
+                                                },
+                                        "post":  {
+                                                     "summary":  "Create Student",
+                                                     "description":  "Create a new student.",
+                                                     "operationId":  "create_student_api_students_post",
+                                                     "requestBody":  {
+                                                                         "required":  true,
+                                                                         "content":  "@{application/json=}"
+                                                                     },
+                                                     "responses":  {
+                                                                       "200":  "@{description=Successful Response; content=}",
+                                                                       "422":  "@{description=Validation Error; content=}"
+                                                                   }
+                                                 }
+                                    },
+                  "/api/students/{student_id}":  {
+                                                     "get":  {
+                                                                 "summary":  "Get Student",
+                                                                 "description":  "Get detailed student profile with all related data.",
+                                                                 "operationId":  "get_student_api_students__student_id__get",
+                                                                 "parameters":  [
+                                                                                    "@{name=student_id; in=path; required=True; schema=; description=Student ID}"
+                                                                                ],
+                                                                 "responses":  {
+                                                                                   "200":  "@{description=Successful Response; content=}",
+                                                                                   "422":  "@{description=Validation Error; content=}"
+                                                                               }
+                                                             }
+                                                 },
+                  "/api/students/{student_id}/risk":  {
+                                                          "get":  {
+                                                                      "summary":  "Get Student Risk",
+                                                                      "description":  "Get risk assessment for a student with optional trend and explanation.",
+                                                                      "operationId":  "get_student_risk_api_students__student_id__risk_get",
+                                                                      "parameters":  [
+                                                                                         "@{name=student_id; in=path; required=True; schema=; description=Student ID}",
+                                                                                         "@{name=recalculate; in=query; required=False; schema=; description=Force recalculation}",
+                                                                                         "@{name=include_trend; in=query; required=False; schema=; description=Include trend analysis}",
+                                                                                         "@{name=include_explanation; in=query; required=False; schema=; description=Include ML explanation}"
+                                                                                     ],
+                                                                      "responses":  {
+                                                                                        "200":  "@{description=Successful Response; content=}",
+                                                                                        "422":  "@{description=Validation Error; content=}"
+                                                                                    }
+                                                                  }
+                                                      },
+                  "/api/students/{student_id}/evaluate":  {
+                                                              "post":  {
+                                                                           "summary":  "Evaluate Student",
+                                                                           "description":  "Trigger risk evaluation for a student.",
+                                                                           "operationId":  "evaluate_student_api_students__student_id__evaluate_post",
+                                                                           "parameters":  [
+                                                                                              "@{name=student_id; in=path; required=True; schema=; description=Student ID}"
+                                                                                          ],
+                                                                           "responses":  {
+                                                                                             "200":  "@{description=Successful Response; content=}",
+                                                                                             "422":  "@{description=Validation Error; content=}"
+                                                                                         }
+                                                                       }
+                                                          },
+                  "/api/alerts":  {
+                                      "get":  {
+                                                  "summary":  "Get Alerts",
+                                                  "description":  "Get alerts with optional filters.",
+                                                  "operationId":  "get_alerts_api_alerts_get",
+                                                  "parameters":  [
+                                                                     "@{name=student_id; in=query; required=False; schema=; description=Filter by student ID}",
+                                                                     "@{name=acknowledged; in=query; required=False; schema=; description=Filter by acknowledged status}",
+                                                                     "@{name=severity; in=query; required=False; schema=; description=Filter by severity}",
+                                                                     "@{name=limit; in=query; required=False; schema=}"
+                                                                 ],
+                                                  "responses":  {
+                                                                    "200":  "@{description=Successful Response; content=}",
+                                                                    "422":  "@{description=Validation Error; content=}"
+                                                                }
+                                              }
+                                  },
+                  "/api/alerts/{alert_id}/acknowledge":  {
+                                                             "post":  {
+                                                                          "summary":  "Acknowledge Alert",
+                                                                          "description":  "Acknowledge an alert.",
+                                                                          "operationId":  "acknowledge_alert_api_alerts__alert_id__acknowledge_post",
+                                                                          "parameters":  [
+                                                                                             "@{name=alert_id; in=path; required=True; schema=; description=Alert ID}"
+                                                                                         ],
+                                                                          "requestBody":  {
+                                                                                              "required":  true,
+                                                                                              "content":  "@{application/json=}"
+                                                                                          },
+                                                                          "responses":  {
+                                                                                            "200":  "@{description=Successful Response; content=}",
+                                                                                            "422":  "@{description=Validation Error; content=}"
+                                                                                        }
+                                                                      }
+                                                         },
+                  "/api/interventions":  {
+                                             "get":  {
+                                                         "summary":  "Get Interventions",
+                                                         "description":  "Get interventions with optional filters.",
+                                                         "operationId":  "get_interventions_api_interventions_get",
+                                                         "parameters":  [
+                                                                            "@{name=student_id; in=query; required=False; schema=; description=Filter by student ID}",
+                                                                            "@{name=status; in=query; required=False; schema=; description=Filter by status}",
+                                                                            "@{name=assigned_to; in=query; required=False; schema=; description=Filter by assigned user}"
+                                                                        ],
+                                                         "responses":  {
+                                                                           "200":  "@{description=Successful Response; content=}",
+                                                                           "422":  "@{description=Validation Error; content=}"
+                                                                       }
+                                                     },
+                                             "post":  {
+                                                          "summary":  "Create Intervention",
+                                                          "description":  "Create a new intervention.",
+                                                          "operationId":  "create_intervention_api_interventions_post",
+                                                          "requestBody":  {
+                                                                              "required":  true,
+                                                                              "content":  "@{application/json=}"
+                                                                          },
+                                                          "responses":  {
+                                                                            "200":  "@{description=Successful Response; content=}",
+                                                                            "422":  "@{description=Validation Error; content=}"
+                                                                        }
+                                                      }
+                                         },
+                  "/api/interventions/{intervention_id}":  {
+                                                               "put":  {
+                                                                           "summary":  "Update Intervention",
+                                                                           "description":  "Update an intervention.",
+                                                                           "operationId":  "update_intervention_api_interventions__intervention_id__put",
+                                                                           "parameters":  [
+                                                                                              "@{name=intervention_id; in=path; required=True; schema=; description=Intervention ID}"
+                                                                                          ],
+                                                                           "requestBody":  {
+                                                                                               "required":  true,
+                                                                                               "content":  "@{application/json=}"
+                                                                                           },
+                                                                           "responses":  {
+                                                                                             "200":  "@{description=Successful Response; content=}",
+                                                                                             "422":  "@{description=Validation Error; content=}"
+                                                                                         }
+                                                                       }
+                                                           },
+                  "/api/analytics/overview":  {
+                                                  "get":  {
+                                                              "summary":  "Get Analytics Overview",
+                                                              "description":  "Get analytics overview.",
+                                                              "operationId":  "get_analytics_overview_api_analytics_overview_get",
+                                                              "parameters":  [
+                                                                                 "@{name=department; in=query; required=False; schema=; description=Filter by department}",
+                                                                                 "@{name=semester; in=query; required=False; schema=; description=Filter by semester}"
+                                                                             ],
+                                                              "responses":  {
+                                                                                "200":  "@{description=Successful Response; content=}",
+                                                                                "422":  "@{description=Validation Error; content=}"
+                                                                            }
+                                                          }
+                                              },
+                  "/api/analytics/trends":  {
+                                                "get":  {
+                                                            "summary":  "Get Risk Trends",
+                                                            "description":  "Get risk trends over time.",
+                                                            "operationId":  "get_risk_trends_api_analytics_trends_get",
+                                                            "parameters":  [
+                                                                               "@{name=days; in=query; required=False; schema=; description=Number of days to analyze}",
+                                                                               "@{name=department; in=query; required=False; schema=; description=Filter by department}"
+                                                                           ],
+                                                            "responses":  {
+                                                                              "200":  "@{description=Successful Response; content=}",
+                                                                              "422":  "@{description=Validation Error; content=}"
+                                                                          }
+                                                        }
+                                            },
+                  "/api/analytics/departments":  {
+                                                     "get":  {
+                                                                 "summary":  "Get Department Analytics",
+                                                                 "description":  "Get risk distribution by department.",
+                                                                 "operationId":  "get_department_analytics_api_analytics_departments_get",
+                                                                 "responses":  {
+                                                                                   "200":  "@{description=Successful Response; content=}"
+                                                                               }
+                                                             }
+                                                 },
+                  "/api/analytics/courses":  {
+                                                 "get":  {
+                                                             "summary":  "Get Course Analytics",
+                                                             "description":  "Get course-level risk heatmap.",
+                                                             "operationId":  "get_course_analytics_api_analytics_courses_get",
+                                                             "parameters":  [
+                                                                                "@{name=semester; in=query; required=False; schema=; description=Filter by semester}"
+                                                                            ],
+                                                             "responses":  {
+                                                                               "200":  "@{description=Successful Response; content=}",
+                                                                               "422":  "@{description=Validation Error; content=}"
+                                                                           }
+                                                         }
+                                             },
+                  "/api/ml/train":  {
+                                        "post":  {
+                                                     "summary":  "Train Model",
+                                                     "description":  "Train ML model with current student data.",
+                                                     "operationId":  "train_model_api_ml_train_post",
+                                                     "requestBody":  {
+                                                                         "content":  "@{application/json=}"
+                                                                     },
+                                                     "responses":  {
+                                                                       "200":  "@{description=Successful Response; content=}",
+                                                                       "422":  "@{description=Validation Error; content=}"
+                                                                   }
+                                                 }
+                                    },
+                  "/api/ml/model/info":  {
+                                             "get":  {
+                                                         "summary":  "Get Model Info",
+                                                         "description":  "Get information about the current model.",
+                                                         "operationId":  "get_model_info_api_ml_model_info_get",
+                                                         "responses":  {
+                                                                           "200":  "@{description=Successful Response; content=}"
+                                                                       }
+                                                     }
+                                         },
+                  "/api/ml/features/importance":  {
+                                                      "get":  {
+                                                                  "summary":  "Get Feature Importance",
+                                                                  "description":  "Get feature importance from the trained model.",
+                                                                  "operationId":  "get_feature_importance_api_ml_features_importance_get",
+                                                                  "responses":  {
+                                                                                    "200":  "@{description=Successful Response; content=}"
+                                                                                }
+                                                              }
+                                                  },
+                  "/api/ml/evaluate":  {
+                                           "post":  {
+                                                        "summary":  "Evaluate Model",
+                                                        "description":  "Evaluate model performance on test data.",
+                                                        "operationId":  "evaluate_model_api_ml_evaluate_post",
+                                                        "responses":  {
+                                                                          "200":  "@{description=Successful Response; content=}"
+                                                                      }
+                                                    }
+                                       },
+                  "/api/students/{student_id}/trend":  {
+                                                           "get":  {
+                                                                       "summary":  "Get Student Trend",
+                                                                       "description":  "Get trend analysis for a student.",
+                                                                       "operationId":  "get_student_trend_api_students__student_id__trend_get",
+                                                                       "parameters":  [
+                                                                                          "@{name=student_id; in=path; required=True; schema=; description=Student ID}",
+                                                                                          "@{name=lookback_days; in=query; required=False; schema=; description=Number of days to look back}"
+                                                                                      ],
+                                                                       "responses":  {
+                                                                                         "200":  "@{description=Successful Response; content=}",
+                                                                                         "422":  "@{description=Validation Error; content=}"
+                                                                                     }
+                                                                   }
+                                                       },
+                  "/api/ml/model/retrain-check":  {
+                                                      "get":  {
+                                                                  "summary":  "Check Retraining",
+                                                                  "description":  "Check if model should be retrained.",
+                                                                  "operationId":  "check_retraining_api_ml_model_retrain_check_get",
+                                                                  "responses":  {
+                                                                                    "200":  "@{description=Successful Response; content=}"
+                                                                                }
+                                                              }
+                                                  },
+                  "/api/ml/model/retrain":  {
+                                                "post":  {
+                                                             "summary":  "Retrain Model",
+                                                             "description":  "Retrain the model with current data.",
+                                                             "operationId":  "retrain_model_api_ml_model_retrain_post",
+                                                             "requestBody":  {
+                                                                                 "content":  "@{application/json=}"
+                                                                             },
+                                                             "responses":  {
+                                                                               "200":  "@{description=Successful Response; content=}",
+                                                                               "422":  "@{description=Validation Error; content=}"
+                                                                           }
+                                                         }
+                                            },
+                  "/api/ml/model/versions":  {
+                                                 "get":  {
+                                                             "summary":  "Get Model Versions",
+                                                             "description":  "Get list of all model versions.",
+                                                             "operationId":  "get_model_versions_api_ml_model_versions_get",
+                                                             "responses":  {
+                                                                               "200":  "@{description=Successful Response; content=}"
+                                                                           }
+                                                         }
+                                             },
+                  "/api/ml/model/performance":  {
+                                                    "get":  {
+                                                                "summary":  "Get Model Performance",
+                                                                "description":  "Get model performance metrics.",
+                                                                "operationId":  "get_model_performance_api_ml_model_performance_get",
+                                                                "responses":  {
+                                                                                  "200":  "@{description=Successful Response; content=}"
+                                                                              }
+                                                            }
+                                                },
+                  "/api/ml/model/drift":  {
+                                              "get":  {
+                                                          "summary":  "Check Data Drift",
+                                                          "description":  "Check for data drift.",
+                                                          "operationId":  "check_data_drift_api_ml_model_drift_get",
+                                                          "responses":  {
+                                                                            "200":  "@{description=Successful Response; content=}"
+                                                                        }
+                                                      }
+                                          },
+                  "/api/upload":  {
+                                      "post":  {
+                                                   "summary":  "Upload Student Data",
+                                                   "description":  "Upload student data from any file format. Automatically detects format and processes all students with ML risk predictions.",
+                                                   "operationId":  "upload_student_data_api_upload_post",
+                                                   "requestBody":  {
+                                                                       "content":  "@{multipart/form-data=}",
+                                                                       "required":  true
+                                                                   },
+                                                   "responses":  {
+                                                                     "200":  "@{description=Successful Response; content=}",
+                                                                     "422":  "@{description=Validation Error; content=}"
+                                                                 }
+                                               }
+                                  },
+                  "/":  {
+                            "get":  {
+                                        "summary":  "Root",
+                                        "description":  "Root endpoint - API information.",
+                                        "operationId":  "root__get",
+                                        "responses":  {
+                                                          "200":  "@{description=Successful Response; content=}"
+                                                      }
+                                    }
+                        },
+                  "/api/health":  {
+                                      "get":  {
+                                                  "summary":  "Health Check",
+                                                  "description":  "Health check endpoint.",
+                                                  "operationId":  "health_check_api_health_get",
+                                                  "responses":  {
+                                                                    "200":  "@{description=Successful Response; content=}"
+                                                                }
+                                              }
+                                  },
+                  "/api/students/evaluate-all":  {
+                                                     "post":  {
+                                                                  "summary":  "Evaluate All Students",
+                                                                  "description":  "Manually trigger risk assessment for ALL students in database. Useful for fixing missing assessments.",
+                                                                  "operationId":  "evaluate_all_students_api_students_evaluate_all_post",
+                                                                  "responses":  {
+                                                                                    "200":  "@{description=Successful Response; content=}"
+                                                                                }
+                                                              }
+                                                 },
+                  "/api/test-risk-assessment/{student_id}":  {
+                                                                 "post":  {
+                                                                              "summary":  "Test Risk Assessment Creation",
+                                                                              "description":  "Test endpoint to manually create a risk assessment for a student.",
+                                                                              "operationId":  "test_risk_assessment_creation_api_test_risk_assessment__student_id__post",
+                                                                              "parameters":  [
+                                                                                                 "@{name=student_id; in=path; required=True; schema=}"
+                                                                                             ],
+                                                                              "responses":  {
+                                                                                                "200":  "@{description=Successful Response; content=}",
+                                                                                                "422":  "@{description=Validation Error; content=}"
+                                                                                            }
+                                                                          }
+                                                             },
+                  "/api/diagnostics":  {
+                                           "get":  {
+                                                       "summary":  "Diagnostics",
+                                                       "description":  "Diagnostic endpoint to check system status and verify fixes are active.",
+                                                       "operationId":  "diagnostics_api_diagnostics_get",
+                                                       "responses":  {
+                                                                         "200":  "@{description=Successful Response; content=}"
+                                                                     }
+                                                   }
+                                       }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "Body_acknowledge_alert_api_alerts__alert_id__acknowledge_post":  {
+                                                                                                             "properties":  {
+                                                                                                                                "acknowledged_by":  "@{type=string; title=Acknowledged By; description=User ID acknowledging the alert}"
+                                                                                                                            },
+                                                                                                             "type":  "object",
+                                                                                                             "required":  [
+                                                                                                                              "acknowledged_by"
+                                                                                                                          ],
+                                                                                                             "title":  "Body_acknowledge_alert_api_alerts__alert_id__acknowledge_post"
+                                                                                                         },
+                                       "Body_retrain_model_api_ml_model_retrain_post":  {
+                                                                                            "properties":  {
+                                                                                                               "model_type":  "@{anyOf=System.Object[]; title=Model Type; description=Model type (optional)}",
+                                                                                                               "use_mock_labels":  "@{type=boolean; title=Use Mock Labels; description=Use mock labels; default=False}"
+                                                                                                           },
+                                                                                            "type":  "object",
+                                                                                            "title":  "Body_retrain_model_api_ml_model_retrain_post"
+                                                                                        },
+                                       "Body_train_model_api_ml_train_post":  {
+                                                                                  "properties":  {
+                                                                                                     "model_type":  "@{type=string; title=Model Type; description=Model type: random_forest, logistic_regression, gradient_boosting, xgboost, lightgbm, catboost, neural_network, ensemble; default=xgboost}",
+                                                                                                     "use_mock_labels":  "@{type=boolean; title=Use Mock Labels; description=Use mock labels if real labels unavailable; default=False}",
+                                                                                                     "test_size":  "@{type=number; maximum=0.5; minimum=0.1; title=Test Size; description=Test set size; default=0.2}",
+                                                                                                     "optimize_hyperparameters":  "@{type=boolean; title=Optimize Hyperparameters; description=Use Optuna for hyperparameter optimization; default=False}"
+                                                                                                 },
+                                                                                  "type":  "object",
+                                                                                  "title":  "Body_train_model_api_ml_train_post"
+                                                                              },
+                                       "Body_upload_student_data_api_upload_post":  {
+                                                                                        "properties":  {
+                                                                                                           "file":  "@{type=string; format=binary; title=File; description=Any file format with student data (CSV, Excel, JSON, TSV, TXT, etc.)}",
+                                                                                                           "student_name":  "@{anyOf=System.Object[]; title=Student Name; description=Student name (if not in file)}",
+                                                                                                           "roll_number":  "@{anyOf=System.Object[]; title=Roll Number; description=Roll number (if not in file)}"
+                                                                                                       },
+                                                                                        "type":  "object",
+                                                                                        "required":  [
+                                                                                                         "file"
+                                                                                                     ],
+                                                                                        "title":  "Body_upload_student_data_api_upload_post"
+                                                                                    },
+                                       "HTTPValidationError":  {
+                                                                   "properties":  {
+                                                                                      "detail":  "@{items=; type=array; title=Detail}"
+                                                                                  },
+                                                                   "type":  "object",
+                                                                   "title":  "HTTPValidationError"
+                                                               },
+                                       "ValidationError":  {
+                                                               "properties":  {
+                                                                                  "loc":  "@{items=; type=array; title=Location}",
+                                                                                  "msg":  "@{type=string; title=Message}",
+                                                                                  "type":  "@{type=string; title=Error Type}"
+                                                                              },
+                                                               "type":  "object",
+                                                               "required":  [
+                                                                                "loc",
+                                                                                "msg",
+                                                                                "type"
+                                                                            ],
+                                                               "title":  "ValidationError"
+                                                           }
+                                   }
+                   }
+}
