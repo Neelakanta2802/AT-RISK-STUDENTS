@@ -25,6 +25,7 @@ dist-ssr
 # Extra cleanup
 *.zip
 *.txt
+!backend/requirements.txt
 *.csv
 *.html
 catboost_info/
