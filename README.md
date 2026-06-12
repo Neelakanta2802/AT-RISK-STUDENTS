@@ -1,4 +1,6 @@
+
 # Student Early Warning System (EWS)
+link:https://at-risk-students-ews.vercel.app/
 
 A full-stack predictive analytics platform designed to identify students at risk of academic difficulty or dropout. By integrating historical academic records, attendance logs, and engagement metrics, the platform processes student data through a machine learning pipeline to generate actionable risk scores and top contributing factors. This enables educational administrators to initiate timely, targeted interventions.
 
