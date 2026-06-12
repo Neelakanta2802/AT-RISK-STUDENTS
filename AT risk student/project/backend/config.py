@@ -1,6 +1,7 @@
 """
 Configuration settings for the Early Warning System backend.
 """
+import os
 from pydantic_settings import BaseSettings
 from pydantic import field_validator
 from typing import Literal
@@ -23,7 +24,7 @@ class Settings(BaseSettings):
     
     # API Configuration
     api_host: str = "0.0.0.0"
-    api_port: int = 8000
+    api_port: int = int(os.environ.get("PORT", 8000))
     api_reload: bool = True
 
     @field_validator("api_host", mode="before")
